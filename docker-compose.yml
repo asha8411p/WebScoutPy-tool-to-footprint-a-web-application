@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  your_tool:
+    build: .
+    ports:
+      - "5000:80"  # Change as needed
+    volumes:
+      - E:/Coding/Python Projects/WebScoutPy-tool to footprint a web application:/app/output  # Map host directory './output' to '/app/output' in the container
+    environment:
+      - SAVE_DIRECTORY=/app/output
+  dvwa:
+    image: vulnerables/web-dvwa
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_PASS=${MYSQL_PASS}  # Change as needed
